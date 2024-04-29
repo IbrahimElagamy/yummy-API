@@ -101,11 +101,13 @@ $(".searchBtn").click(function () {
 });
 // ====================== Get Meal Details ======================
 async function getMealDetails(id) {
+  $(".lodingScreenOtherPages").fadeIn(500);
   let response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
   );
   let data = await response.json();
   displayMealDetails(data.meals[0]);
+  $(".lodingScreenOtherPages").fadeOut(1000);
 }
 // ====================== Display Meal Details ======================
 function displayMealDetails(meal) {
